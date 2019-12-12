@@ -1,4 +1,5 @@
 import g4p_controls.*;
+import java.awt.*;
 
 float angleX;
 float angleY;
@@ -35,6 +36,9 @@ void setup() {
 
 void draw() {
   background(51);
+  fill(255);
+  text("Skriv et navn på en storby i søgefeltet, for at dens lokation dukker op på globusen. Husk stort bogstav. (Prøv at skrive København)",15,480,175,600);
+  
   translate(width*0.5, height*0.5);
   rotateX(angleX);
   rotateY(angleY);  
@@ -48,7 +52,7 @@ void draw() {
     
   if(downPressed == true) angleX += 0.01;  
   
-  lights();
+  //lights();
   fill(200);
   noStroke();
   //sphere(r);

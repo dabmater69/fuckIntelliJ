@@ -75,6 +75,13 @@ if(downPressed == false) {
 
 } //_CODE_:button4:796932:
 
+public void button5_click1(GButton source, GEvent event) { //_CODE_:button5:722565:
+  println("button5 - GButton >> GEvent." + event + " @ " + millis());
+  
+  textfield1.setText("");
+  
+} //_CODE_:button5:722565:
+
 
 
 // Create all the GUI controls. 
@@ -84,26 +91,30 @@ public void createGUI(){
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setCursor(ARROW);
   surface.setTitle("Sketch Window");
-  textfield1 = new GTextField(this, 14, 561, 160, 30, G4P.SCROLLBARS_NONE);
-  textfield1.setPromptText("Enter city name");
+  textfield1 = new GTextField(this, 15, 555, 160, 30, G4P.SCROLLBARS_NONE);
+  textfield1.setPromptText("Indtast navn på storby");
   textfield1.setOpaque(true);
   textfield1.addEventHandler(this, "textfield1_change1");
-  button1 = new GButton(this, 250, 25, 80, 50);
-  button1.setText("Up");
+  button1 = new GButton(this, 250, 15, 80, 60);
+  button1.setText("Op");
   button1.setTextBold();
   button1.addEventHandler(this, "button1_click1");
-  button2 = new GButton(this, 25, 250, 50, 80);
-  button2.setText("Left");
+  button2 = new GButton(this, 15, 250, 60, 80);
+  button2.setText("Venstre");
   button2.setTextBold();
   button2.addEventHandler(this, "button2_click2");
-  button3 = new GButton(this, 525, 250, 50, 80);
-  button3.setText("Right");
+  button3 = new GButton(this, 525, 250, 60, 80);
+  button3.setText("Højre");
   button3.setTextBold();
   button3.addEventHandler(this, "button3_click1");
-  button4 = new GButton(this, 250, 525, 80, 50);
-  button4.setText("Down");
+  button4 = new GButton(this, 250, 525, 80, 60);
+  button4.setText("Ned");
   button4.setTextBold();
   button4.addEventHandler(this, "button4_click1");
+  button5 = new GButton(this, 183, 555, 32, 30);
+  button5.setText("DEL");
+  button5.setLocalColorScheme(GCScheme.RED_SCHEME);
+  button5.addEventHandler(this, "button5_click1");
 }
 
 // Variable declarations 
@@ -113,3 +124,4 @@ GButton button1;
 GButton button2; 
 GButton button3; 
 GButton button4; 
+GButton button5; 
