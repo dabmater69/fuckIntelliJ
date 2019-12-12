@@ -12,15 +12,18 @@ float r = 200;
 PImage earth;
 PShape globe;
 
+
 boolean upPressed = false;
 boolean leftPressed = false;
-
+boolean rightPressed = false;
+boolean downPressed = false;
 
 void setup() {
   size(600, 600, P3D);
   earth = loadImage("earth.jpg");
   table = loadTable("worldcities.csv");
-
+  
+  
   createGUI();
   customGUI();
 
@@ -37,14 +40,13 @@ void draw() {
   rotateY(angleY);  
       
       
-  if(upPressed == true) angleX -= 0.025;
+  if(upPressed == true) angleX -= 0.01;
     
-  if(leftPressed == true) angleY += 0.025;    
+  if(leftPressed == true) angleY += 0.01;    
   
-  upPressed = false;
-  
-  leftPressed = false;
-  
+  if(rightPressed == true) angleY -= 0.01;
+    
+  if(downPressed == true) angleX += 0.01;  
   
   lights();
   fill(200);
@@ -68,47 +70,24 @@ void draw() {
     
     PVector pos = new PVector(x, y, z);
     
-    float h = pow(10, 2);
+    float h = pow(10, 6);
     float maxh = pow(10, 7);
     h = map(h, 0, maxh, 10, 100);
     PVector xaxis = new PVector(1, 0, 0);
     float angleb = PVector.angleBetween(xaxis, pos);
     PVector raxis = xaxis.cross(pos);
-  
-    
-    
-    
     
     if(textfield1.getText().equals(row.getString(0))){
     pushMatrix();
     translate(x, y, z);
     rotate(angleb, raxis.x, raxis.y, raxis.z);
-    println(row.getFloat(2));
-    println(row.getFloat(3));    
     fill(255,0,0);
-    box(h, 5, 5);
+    box(h, 4, 4);
     popMatrix();
     }
-    fill(255);
-    
-    
+   
   } 
-  
-}
-
-void keyPressed() {
-  if (key == CODED) {
-    if (keyCode == UP) {
-      angleX += 0.005;
-    } else if (keyCode == DOWN) {
-      angleX -= 0.005;
-    } 
-  }
-    if (keyCode == RIGHT) {
-      angleY += 0.005;
-    } else if (keyCode == LEFT) {
-      angleY -= 0.005;
-    } 
+  fill(255);
   
 }
 
