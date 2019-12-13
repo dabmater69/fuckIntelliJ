@@ -11,6 +11,7 @@ Table table;
 float r = 200;
 
 PImage earth;
+PImage space;
 PShape globe;
 
 
@@ -22,6 +23,7 @@ boolean downPressed = false;
 void setup() {
   size(600, 600, P3D);
   earth = loadImage("earth.jpg");
+  space = loadImage("space.png");
   table = loadTable("worldcities.csv");
   
   
@@ -35,7 +37,7 @@ void setup() {
 }
 
 void draw() {
-  background(51);
+  background(space);
   fill(255);
   text("Skriv et navn på en storby i søgefeltet, for at dens lokation dukker op på globusen. Husk stort bogstav. (Prøv at skrive København)",15,480,175,600);
   
@@ -52,7 +54,7 @@ void draw() {
     
   if(downPressed == true) angleX += 0.01;  
   
-  //lights();
+  lights();
   fill(200);
   noStroke();
   //sphere(r);
